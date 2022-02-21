@@ -16,7 +16,9 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Margin="2" Grid.Column="0" Text="{Binding}" />
-                                <Button Margin="3" Grid.Column="1" Width="15" Height="15">
+                                <Button Margin="3" Grid.Column="1" Width="15" Height="15"
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type tagsControl:TagControl}}, Path=RemoveCommand}"
+                                        CommandParameter="{Binding}">
                                     <Button.Style>
                                         <Style TargetType="{x:Type Button}" BasedOn="{x:Null}">
                                             <Setter Property="Foreground" Value="Black" />
@@ -67,8 +69,10 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Column="0" Width="120"></TextBox>
-                        <Button Grid.Column="1" Margin="3" Width="15" Height="15">
+                        <TextBox Grid.Column="0" Width="120" x:Name="InputText"></TextBox>
+                        <Button Grid.Column="1" Margin="3" Width="15" Height="15"
+                                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type tagsControl:TagControl}}, Path=AddCommand}"
+                                CommandParameter="{Binding ElementName=InputText, Path=Text}">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}" BasedOn="{x:Null}">
                                     <Setter Property="Foreground" Value="YellowGreen" />
